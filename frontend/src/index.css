@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --ms-bg: #0A0E1A;
+  --ms-surface: #111827;
+  --ms-surface-2: #1F2937;
+  --ms-border: rgba(255,255,255,0.07);
+  --ms-teal: #2DD4BF;
+  --ms-teal-glow: rgba(45,212,191,0.15);
+  --ms-violet: #8B5CF6;
+  --ms-rose: #F472B6;
+  --ms-amber: #FBBF24;
+  --ms-text: #F9FAFB;
+  --ms-text-muted: #9CA3AF;
+  --ms-text-dim: #4B5563;
+}
+
+* {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  margin: 0;
+  background: var(--ms-bg);
+  color: var(--ms-text);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+.glass-card {
+  background: rgba(17, 24, 39, 0.8);
+  border: 1px solid var(--ms-border);
+  backdrop-filter: blur(20px);
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.text-brand {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.01em;
+}
+
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(45, 212, 191, 0.12);
+  border-color: var(--ms-teal);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ms-teal) rgba(255,255,255,0.05);
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.03);
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--ms-teal);
+  border-radius: 999px;
+}
+
+::selection {
+  background: rgba(45, 212, 191, 0.25);
+}
+
+a { color: var(--ms-teal); }
+
+button { cursor: pointer; }
+
+.app-shell {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.surface {
+  background: var(--ms-surface);
+  border: 1px solid var(--ms-border);
+}
+
+.avatar-circle {
+  background: linear-gradient(135deg, var(--ms-teal), var(--ms-violet));
+  color: #0a0e1a;
+}
+
+.glow-border {
+  box-shadow: 0 0 0 1px var(--ms-border), 0 12px 40px rgba(45, 212, 191, 0.12);
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0.08) 60%, transparent 100%);
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes shimmer { 100% { transform: translateX(100%); } }
